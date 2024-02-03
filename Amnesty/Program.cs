@@ -39,12 +39,10 @@ namespace Amnesty
         {
             FullName = fullName;
             Crime = crime;
-            IsInJail = true;
         }
 
         public string FullName { get; private set; }
         public string Crime { get; private set; }
-        public bool IsInJail { get; private set; }
     }
 
     class CriminalDossierFabrik
