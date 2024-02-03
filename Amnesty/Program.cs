@@ -13,7 +13,7 @@ namespace Amnesty
             CriminalDossierFabrik dossierFabrik = new CriminalDossierFabrik();
             List<CriminalDossier> criminalDossiers = new List<CriminalDossier>();
 
-            dossierFabrik.GetCrime(crime);
+            dossierFabrik.AddCrime(crime);
 
             for (int i = 0; i < dossiersQuantity; i++)
                 criminalDossiers.Add(dossierFabrik.CreateDossier());
@@ -101,7 +101,7 @@ namespace Amnesty
                 "Наркоторговля",
             };
 
-        public void GetCrime(string crime) =>
+        public void AddCrime(string crime) =>
             _crimes.Add(crime);
     }
 }
