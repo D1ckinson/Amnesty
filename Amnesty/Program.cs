@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Amnesty
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             int dossiersQuantity = 10;
             string crime = "Антиправительственное";
@@ -20,16 +21,18 @@ namespace Amnesty
 
             WriteDossierList("до", criminalDossiers);
 
-            criminalDossiers.RemoveAll(dossier => dossier.Crime == crime);
+            IEnumerable<CriminalDossier> filteredCriminalDossiers = criminalDossiers.Where(dossier => dossier.Crime != crime);
 
             Console.WriteLine();
-            WriteDossierList("после", criminalDossiers);
+            WriteDossierList("после", filteredCriminalDossiers);
         }
 
-        private static void WriteDossierList(string text, List<CriminalDossier> criminalDossiers)
+        private static void WriteDossierList(string text, IEnumerable<CriminalDossier> criminalDossiers)
         {
             Console.WriteLine($"Список преступников {text} амнистии:");
-            criminalDossiers.ForEach(dossier => Console.WriteLine($"{dossier.FullName}. Преступление: {dossier.Crime}."));
+
+            foreach (CriminalDossier dossier in criminalDossiers)
+                Console.WriteLine($"{dossier.FullName}. Преступление: {dossier.Crime}.");
         }
     }
 
